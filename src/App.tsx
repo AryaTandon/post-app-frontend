@@ -14,6 +14,7 @@ function App() {
   const [posts, setPosts] = useState<Props[]>([]);
   const [newResponse, setNewResponse] = useState<Response>();
   const [displayedPost, setDisplayedPost] = useState<Props2 | null>();
+  const [postEditor, setPostEditor] = useState<boolean>(false);
 
   const displayPosts = async () => {
     try {
@@ -43,6 +44,29 @@ function App() {
     }
   }
 
+  const showPostEditor = () => {
+    setPostEditor(!postEditor);
+  } 
+
+  const savePost = async (id: number, editedTitle: string, editedPost: string) => {
+    try {
+      const resOfUpdate = await fetch("http://localhost:4000/", {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id, editedTitle, editedPost}),
+      });
+      setNewResponse(resOfUpdate);
+      setPostEditor(false);
+      const newRows = await resOfUpdate.json();
+      setDisplayedPost({id: newRows.id, title: newRows.title, post: newRows.post})
+    }
+    catch (err) {
+      console.error(err.message)
+    }
+  }
+
   const deletePost = async (id: number) => {
     try {
       const resOfDelete = await fetch("http://localhost:4000/", {
@@ -61,7 +85,8 @@ function App() {
   }
 
   const showPost = ({id, title, post}: Props2) => {
-    setDisplayedPost({id, title, post})
+    setDisplayedPost({id, title, post});
+    setPostEditor(false);
   }
 
   useEffect (() => {
@@ -84,7 +109,7 @@ function App() {
       {console.log(posts)}
       {posts.map(({id, title, post}) => {
         return (
-          <div>
+          <div key={id}>
           <button onClick = {() => showPost({id, title, post})}>{title ? title : `(No title - post ${id})`}</button>
           <br />
           </div>
@@ -95,6 +120,9 @@ function App() {
         id={displayedPost.id}
         title={displayedPost.title}
         post={displayedPost.post}
+        postEditor={postEditor}
+        savePost={savePost}
+        showPostEditor={showPostEditor}
         deletePost={deletePost} /> }
       <br />
       </div>
