@@ -15,7 +15,7 @@ const FormatPosts = ({id, title, post, postEditor, savePost, showPostEditor, del
         const editedPost = (document.getElementById("edited-post") as HTMLInputElement).value;
         savePost(id, editedTitle, editedPost);
     }
-    return (postEditor==false ?
+    return (postEditor=== false ?
         <div>
             <p>Title: {title}</p>
             <p>Post: {post}</p>
