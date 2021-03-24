@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { config } from "dotenv";
 import FormatPosts from "./components/FormatPosts";
@@ -16,6 +16,7 @@ function App() {
   const [newResponse, setNewResponse] = useState<Response>();
   const [displayedPost, setDisplayedPost] = useState<Props2 | null>();
   const [postEditor, setPostEditor] = useState<boolean>(false);
+  const inputRef: React.MutableRefObject<any> = useRef();
 
   const displayPosts = async () => {
     try {
@@ -92,6 +93,7 @@ function App() {
 
   useEffect (() => {
     console.log('hey')
+    inputRef.current.focus();
     displayPosts()
   }, [newResponse]);
 
@@ -100,8 +102,11 @@ function App() {
     <>
       <form className="form_top" id="usrform" onSubmit={(e) => handleInput(e)}>
        <h1>Create your Post!</h1>
-        <input className="form_input"type="text" name="title" placeholder="Title of Post" />
-        <textarea className="form_text_area" name="post" form="usrform" placeholder="Enter text here..." required={true}></textarea>
+        <input className="form_input"type="text" name="title" placeholder="Title of Post" ref={inputRef} />
+        <div className="text_area">
+          <textarea id="post_content" className="form_text_area" name="post" form="usrform" placeholder="Enter text here..." required={true}></textarea>
+          <button className="copy_button" onClick={() => {navigator.clipboard.writeText((document.getElementById("post_content") as HTMLInputElement).value)}}>Copy</button>
+        </div>
         <input className="form_submit"type="submit" />
       </form>
       
