@@ -28,6 +28,68 @@
   color: #61dafb;
 }
 
+
+
+.form_top {
+  width: 100%;
+  height:auto;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+}
+.form_input {
+width:200px;
+height:40px;
+
+border-radius: 8px;
+padding-left:10px;
+font-size: 15px;
+background-color:rgb(238, 238, 238);
+border: 1px solid gray;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+}
+.form_input:focus {
+  border: 2px solid purple;
+}
+.form_text_area:focus {
+  border: 2px solid purple;
+}
+.form_text_area {
+  margin-top:10px;
+  width:200px;
+height:100px;
+
+border-radius: 8px;
+padding-left:10px;
+padding-top:10px;
+font-size: 15px;
+background-color:rgb(238, 238, 238);
+border: 1px solid gray;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form_submit {
+  margin-top:10px;
+  background-color: rgba(202, 1, 202, 0.959);
+  color:rgb(248, 248, 248);
+  padding:10px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+  border:1px solid gray
+  
+
+}
+
+.form_submit:hover {
+  background-color: purple;
+  cursor: pointer;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

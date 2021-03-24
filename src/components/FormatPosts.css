@@ -1,0 +1,68 @@
+.mapped_flexbox_holder {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.mapped_flexbox {
+    width: 100%;
+    height:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color:rgb(238, 238, 238);
+    border: 1px solid gray;
+    padding: 15px 20px;
+    max-width: 500px;    
+
+}
+.mapped_holder {
+    width: auto;
+    height:auto;
+    margin:1px 5px;
+  }
+  
+
+.display_holder {
+    display:flex;
+    width: 100%;
+    height: auto;
+ align-items: center;   
+ flex-direction: column;
+}
+
+.display_button_holder {
+    display: flex;
+    width: 240px;
+    justify-content: space-between
+    ;
+}
+
+.action_button {
+  margin-top: 8px;
+  background-color: rgba(202, 1, 202, 0.959);
+  color:rgb(248, 248, 248);
+  padding:10px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+  border:1px solid gray;
+  cursor:pointer
+}
+
+
+
+.display_variable {
+  width:auto;
+  background-color: rgb(248, 248, 248); 
+  border:1px solid gray;
+  border-radius: 10px;
+  padding:10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  
+}

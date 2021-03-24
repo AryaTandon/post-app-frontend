@@ -1,4 +1,5 @@
 
+import './FormatPosts.css'
 export interface Props {
     id: number;
     title: string | undefined;
@@ -16,19 +17,21 @@ const FormatPosts = ({id, title, post, postEditor, savePost, showPostEditor, del
         savePost(id, editedTitle, editedPost);
     }
     return (postEditor=== false ?
-        <div>
-            <p>Title: {title}</p>
-            <p>Post: {post}</p>
-            <button onClick = {() => showPostEditor()}>Edit</button>
-            <button onClick = {() => deletePost(id)}>Delete</button>
+        <div className="display_holder">
+            <h1> Selected Post</h1>
+            <p className="display_content">Title: <span className="display_variable">{title}</span></p>
+            <p className="display_content">Post: <span className="display_variable">{post}</span></p>
+            <div className="display_button_holder">
+            <button className="action_button" onClick = {() => showPostEditor()}>Edit</button>
+            <button className="action_button"onClick = {() => deletePost(id)}>Delete</button>
+            </div>
         </div>
-        : <div>
-        <p>Title: </p><input id="edited-title" type="text" name="title" defaultValue={title}/>
-        <br />
-        <p>Post: </p><textarea id="edited-post" name="post" form="usrform" placeholder="Enter text here..." required={true} defaultValue={post}></textarea>
-        <br />
-        <button onClick = {() => showPostEditor()}>Stop editing</button>
-        <button onClick = {() => getValuesToSave()}>Save</button>
+        :  <div className="display_holder">
+        <h1> Edit Selected Post</h1>
+        <input className="form_input" id="edited-title" type="text" name="title" defaultValue={title}/>
+        <textarea className="form_text_area" id="edited-post" name="post" form="usrform" placeholder="Enter text here..." required={true} defaultValue={post}></textarea>
+        <button className="action_button" onClick = {() => showPostEditor()}>Stop editing</button>
+        <button className="action_button" onClick = {() => getValuesToSave()}>Save</button>
         </div>
     )
 };

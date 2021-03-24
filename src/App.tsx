@@ -98,24 +98,26 @@ function App() {
   return (
   
     <>
-      
-      <form id="usrform" onSubmit={(e) => handleInput(e)}>
-        Title: <input type="text" name="title" />
-        <br />
-        Post: <textarea name="post" form="usrform" placeholder="Enter text here..." required={true}></textarea>
-        <br />
-        <input type="submit" />
+      <form className="form_top" id="usrform" onSubmit={(e) => handleInput(e)}>
+       <h1>Create your Post!</h1>
+        <input className="form_input"type="text" name="title" placeholder="Title of Post" />
+        <textarea className="form_text_area" name="post" form="usrform" placeholder="Enter text here..." required={true}></textarea>
+        <input className="form_submit"type="submit" />
       </form>
-      <br />
-      {console.log(posts)}
+      
+      <div className="mapped_flexbox_holder">
+      <h1> All Posts</h1>
+      <div className="mapped_flexbox">
       {posts.map(({id, title, post}) => {
         return (
-          <div key={id}>
-          <button onClick = {() => showPost({id, title, post})}>{title ? title : `(No title - post ${id})`}</button>
+          <div className='mapped_holder' key={id}>
+          <button className="action_button" onClick = {() => showPost({id, title, post})}>{title ? title : `(No title - post ${id})`}</button>
           <br />
           </div>
         )}
       )}
+      </div>
+      </div>
       <div>
       { displayedPost && <FormatPosts 
         id={displayedPost.id}
