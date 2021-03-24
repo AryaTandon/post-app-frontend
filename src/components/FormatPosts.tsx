@@ -30,7 +30,7 @@ const FormatPosts = ({id, title, post, postEditor, savePost, showPostEditor, del
         <h1> Edit Selected Post</h1>
         <input className="form_input" id="edited-title" type="text" name="title" defaultValue={title}/>
         <textarea className="form_text_area" id="edited-post" name="post" form="usrform" placeholder="Enter text here..." required={true} defaultValue={post}></textarea>
-        <button className="action_button" onClick = {() => showPostEditor()}>Stop editing</button>
+        <button className="action_button" onClick = {() => showPostEditor()}>Cancel Edit</button>
         <button className="action_button" onClick = {() => getValuesToSave()}>Save</button>
         </div>
     )
