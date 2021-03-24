@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { config } from "dotenv";
 import FormatPosts from "./components/FormatPosts";
 import { Props } from "./components/FormatPosts";
 
@@ -18,7 +19,7 @@ function App() {
 
   const displayPosts = async () => {
     try {
-      const res = await fetch("http://localhost:4000/");
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL!);
       setPosts(await res.json());
     } catch (err) {
       console.error(err.message)
@@ -30,7 +31,7 @@ function App() {
     try {
       const title = e.target.elements[0].value;
       const post = e.target.elements[1].value;
-      const resOfPost = await fetch("http://localhost:4000/", {
+      const resOfPost = await fetch(process.env.REACT_APP_BACKEND_URL!, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -50,7 +51,7 @@ function App() {
 
   const savePost = async (id: number, editedTitle: string, editedPost: string) => {
     try {
-      const resOfUpdate = await fetch("http://localhost:4000/", {
+      const resOfUpdate = await fetch(process.env.REACT_APP_BACKEND_URL!, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -69,7 +70,7 @@ function App() {
 
   const deletePost = async (id: number) => {
     try {
-      const resOfDelete = await fetch("http://localhost:4000/", {
+      const resOfDelete = await fetch(process.env.REACT_APP_BACKEND_URL!, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
